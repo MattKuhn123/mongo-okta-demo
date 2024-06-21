@@ -6,7 +6,7 @@ import { TeamMember } from './team-member.model';
 
 @Component({
   selector: 'list-team-members',
-  imports: [ CommonModule, FormsModule ],
+  imports: [CommonModule, FormsModule],
   template: `
   <button (click)="onClickGetTeamMembers()">Get Team Members</button>
   <table>

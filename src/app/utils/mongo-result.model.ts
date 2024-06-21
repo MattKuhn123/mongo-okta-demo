@@ -1,3 +1,3 @@
 export type MongoResult = {
-    result: any;
+  result: any;
 }

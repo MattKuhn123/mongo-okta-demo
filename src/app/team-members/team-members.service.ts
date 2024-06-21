@@ -8,16 +8,16 @@ import { MongoResult } from '../utils/mongo-result.model';
 const teamMembers = "/teamMembers";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class TeamMemberService {
 
-    constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-    getTeamMembers(): Observable<TeamMember[]> {
-        return this.httpClient
-            .get(`${environment.api}${teamMembers}`)
-            .pipe(map(x => x as MongoResult))
-            .pipe(map(x => x.result as TeamMember[]));
-    }
+  getTeamMembers(): Observable<TeamMember[]> {
+    return this.httpClient
+      .get(`${environment.api}${teamMembers}`)
+      .pipe(map(x => x as MongoResult))
+      .pipe(map(x => x.result as TeamMember[]));
+  }
 }
