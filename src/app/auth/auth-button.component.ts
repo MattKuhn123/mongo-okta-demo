@@ -3,7 +3,7 @@ import { AuthService } from '@auth0/auth0-angular';
 import { CommonModule, DOCUMENT } from '@angular/common';
 
 @Component({
-  selector: 'app-auth-button',
+  selector: 'auth-button',
   imports: [ CommonModule ],
   template: `
     <div>

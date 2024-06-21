@@ -7,8 +7,8 @@ import { ListTeamMembersComponent } from "./team-members/list-team-members.compo
 @Component({
   selector: 'app-root',
   template: `
-    <app-auth-button></app-auth-button>
-    <app-user-profile></app-user-profile>
+    <auth-button></auth-button>
+    <user-profile></user-profile>
     <list-events></list-events>
     <list-team-members></list-team-members>
     `,

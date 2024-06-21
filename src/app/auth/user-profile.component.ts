@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
-  selector: 'app-user-profile',
+  selector: 'user-profile',
   imports: [ CommonModule ],
   template: `
     <ul *ngIf="auth.user$ | async as user">
