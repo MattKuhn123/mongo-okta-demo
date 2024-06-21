@@ -6,9 +6,9 @@ import { Event } from './event.model';
 
 @Component({
   selector: 'list-events',
-  imports: [ CommonModule, FormsModule ],
+  imports: [CommonModule, FormsModule],
   template: `
-  <button (click)="onClickGetEvents()">Get Events</button>
+  
   <table>
     <thead>
       <tr>
@@ -22,7 +22,17 @@ import { Event } from './event.model';
         <th>Venue</th>
       </tr>
     </thead>
+
     <tbody>
+        <tr>
+          <td *ngIf="isNoContent" colspan="8">
+            <button 
+              *ngIf="!events" 
+              (click)="onClickGetEvents()">Get Events</button>
+            <p *ngIf="error">{{ error }}</p>
+          </td>
+        </tr>
+
         <tr *ngFor="let item of events">
           <td>{{ item.name }}</td>
           <td>{{ item.startDate }}</td>
@@ -35,13 +45,17 @@ import { Event } from './event.model';
         </tr>
     </tbody>
   </table>
-  <p *ngIf="error">{{ error }}</p>
   `,
   standalone: true
 })
 export class EventsListComponent {
-  events: Event[] = [];
+  events: Event[] | undefined = undefined;
   error: any | undefined = undefined;
+
+  get isNoContent(): boolean {
+    return !this.events || this.error;
+  }
+
   constructor(protected service: EventsService) { }
 
   onClickGetEvents(): void {

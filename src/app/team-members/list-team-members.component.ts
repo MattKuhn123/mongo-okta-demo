@@ -8,7 +8,6 @@ import { TeamMember } from './team-member.model';
   selector: 'list-team-members',
   imports: [CommonModule, FormsModule],
   template: `
-  <button (click)="onClickGetTeamMembers()">Get Team Members</button>
   <table>
     <thead>
       <tr>
@@ -17,21 +16,34 @@ import { TeamMember } from './team-member.model';
         <th>Phone Number</th>
       </tr>
     </thead>
+
     <tbody>
-        <tr *ngFor="let item of teamMembers">
-          <td>{{ item.firstName }}</td>
-          <td>{{ item.lastName }}</td>
-          <td>{{ item.phoneNumber }}</td>
-        </tr>
+      <tr>
+        <td *ngIf="isNoContent" colspan="3">
+          <button 
+            *ngIf="!teamMembers" 
+            (click)="onClickGetTeamMembers()">Get Team Members</button>
+          <p *ngIf="error">{{ error }}</p>
+        </td>
+      </tr>
+
+      <tr *ngFor="let item of teamMembers">
+        <td>{{ item.firstName }}</td>
+        <td>{{ item.lastName }}</td>
+        <td>{{ item.phoneNumber }}</td>
+      </tr>
     </tbody>
   </table>
-  <p *ngIf="error">{{ error }}</p>
   `,
   standalone: true
 })
 export class ListTeamMembersComponent {
-  teamMembers: TeamMember[] = [];
+  teamMembers: TeamMember[] | undefined = undefined;
   error: any | undefined = undefined;
+
+  get isNoContent(): boolean {
+    return !this.teamMembers || this.error;
+  }
 
   constructor(protected service: TeamMemberService) { }
 
