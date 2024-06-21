@@ -1,20 +1,24 @@
 import { Component } from '@angular/core';
-import { AuthButtonComponent } from "./auth-button.component";
-import { UserProfileComponent } from "./user-profile.component";
-import { ApiCallByPhoneComponent } from "./api-call-by-phone.component";
-import { ApiCallByNameComponent } from "./api-call-by-name.component";
+import { AuthButtonComponent } from "./auth/auth-button.component";
+import { UserProfileComponent } from "./auth/user-profile.component";
+import { EventsListComponent } from "./events/list-events.component";
+import { ListTeamMembersComponent } from "./team-members/list-team-members.component";
 
 @Component({
-    selector: 'app-root',
-    template: `
+  selector: 'app-root',
+  template: `
     <app-auth-button></app-auth-button>
     <app-user-profile></app-user-profile>
-    <app-api-call-by-phone></app-api-call-by-phone>
-    <app-api-call-by-name></app-api-call-by-name>
+    <list-events></list-events>
+    <list-team-members></list-team-members>
     `,
-    standalone: true,
-    imports: [AuthButtonComponent, UserProfileComponent, ApiCallByPhoneComponent, ApiCallByNameComponent]
+  standalone: true,
+  imports: [
+    AuthButtonComponent,
+    UserProfileComponent,
+    EventsListComponent,
+    ListTeamMembersComponent
+  ]
 })
 export class AppComponent {
-  title = 'okta-test';
 }

@@ -4,7 +4,7 @@ import { AppComponent } from './app/app.component';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authHttpInterceptorFn } from '@auth0/auth0-angular';
 import { environment } from './environments/environment.development';
-import { jwtStringInterceptor } from './app/jwt-string.interceptor';
+import { jwtStringInterceptor } from './app/auth/jwt-string.interceptor';
 
 bootstrapApplication(AppComponent, {
   providers: [
