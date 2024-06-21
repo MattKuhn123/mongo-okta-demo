@@ -8,20 +8,25 @@ import { CommonModule, DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-root',
   template: `
-    <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-      <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
-        Log out
-      </button>
+    <div>
+      <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+        <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
+          Log out
+        </button>
 
-      <user-profile [user]="auth.user$ | async"></user-profile>
-    </ng-container>
-    
-    <ng-template #loggedOut>
-      <button (click)="auth.loginWithRedirect()">Log in</button>
-    </ng-template>
-    
+        <user-profile [user]="auth.user$ | async"></user-profile>
+      </ng-container>
+      
+      <ng-template #loggedOut>
+        <button (click)="auth.loginWithRedirect()">Log in</button>
+      </ng-template>
+    </div>
+
+    <hr>
     <list-events></list-events>
+    <hr>
     <list-team-members></list-team-members>
+    <hr>
     `,
   standalone: true,
   imports: [

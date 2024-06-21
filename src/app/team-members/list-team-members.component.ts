@@ -8,7 +8,6 @@ import { TeamMember } from './team-member.model';
   selector: 'list-team-members',
   imports: [ CommonModule, FormsModule ],
   template: `
-  <h1>Team Members</h1>
   <button (click)="onClickGetTeamMembers()">Get Team Members</button>
   <table>
     <thead>
@@ -26,7 +25,7 @@ import { TeamMember } from './team-member.model';
         </tr>
     </tbody>
   </table>
-  <p *ngIf="error">{{ error | json }}</p>
+  <p *ngIf="error">{{ error }}</p>
   `,
   standalone: true
 })

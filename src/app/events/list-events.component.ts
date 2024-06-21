@@ -8,7 +8,6 @@ import { Event } from './event.model';
   selector: 'list-events',
   imports: [ CommonModule, FormsModule ],
   template: `
-  <h1>Events</h1>
   <button (click)="onClickGetEvents()">Get Events</button>
   <table>
     <thead>
