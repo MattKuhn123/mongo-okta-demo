@@ -6,8 +6,12 @@ import { ApiCallByNameComponent } from "./api-call-by-name.component";
 
 @Component({
     selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css'],
+    template: `
+    <app-auth-button></app-auth-button>
+    <app-user-profile></app-user-profile>
+    <app-api-call-by-phone></app-api-call-by-phone>
+    <app-api-call-by-name></app-api-call-by-name>
+    `,
     standalone: true,
     imports: [AuthButtonComponent, UserProfileComponent, ApiCallByPhoneComponent, ApiCallByNameComponent]
 })
