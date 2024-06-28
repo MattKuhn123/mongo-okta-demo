@@ -4,50 +4,34 @@ const https = require('https');
 const axios = require('axios');
 const cors = require('cors');
 const { auth } = require('express-oauth2-jwt-bearer');
+const { configureAxios } = require('./utils')
 
 const port = 3000;
 const app = express();
-const agent = new https.Agent({
-    rejectUnauthorized: false
-});
 
 const checkJwt = auth({
     audience: process.env.AUDIENCE,
     issuer: process.env.ISSUER,
     jwksUri: process.env.JWKSURI,
-    agent: agent,
+    agent: new https.Agent({ rejectUnauthorized: false }),
 });
 
 app.use(cors());
 
 app.get('/', checkJwt, async (req, res) => {
     try {
-        const data = JSON.stringify({
+        const config = configureAxios({
             "collection": "teamMembers",
             "database": "para",
             "dataSource": "AtlasCluster"
         });
 
-        const config = {
-            method: 'post',
-            url: `${process.env.DATAAPI_URL}/action/find`,
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Request-Headers': '*',
-                'api-key': `${process.env.APIKEY}`,
-            },
-            data: data,
-            httpsAgent: agent
-        };
-
         const response = await axios(config);
-        res.send(JSON.stringify(response.data.documents));
+        res.send(response.data.documents);
     } catch (err) {
         console.log(err);
-        res.send(err);
+        res.send("An error occurred while getting teamMembers");
     }
 })
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-});
+app.listen(port, () => console.log(`Example app listening on port ${port}`));
