@@ -15,7 +15,7 @@ bootstrapApplication(AppComponent, {
         redirect_uri: window.location.origin
       },           
       httpInterceptor: {
-        allowedList: [`${environment.api}/*`, `${environment.api}`],
+        allowedList: [`${environment.api}/*`, `${environment.api}/`],
       }
     }),
     provideHttpClient(withInterceptors([authHttpInterceptorFn]))
