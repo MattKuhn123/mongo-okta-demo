@@ -1,6 +1,6 @@
 const https = require('https');
 
-exports.configureAxios = (data) => {
+exports.createPostRequest = (data) => {
     const config = {
         method: 'post',
         url: `${process.env.DATAAPI_URL}/action/find`,

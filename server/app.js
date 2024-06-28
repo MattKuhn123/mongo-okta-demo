@@ -4,7 +4,7 @@ const https = require('https');
 const axios = require('axios');
 const cors = require('cors');
 const { auth } = require('express-oauth2-jwt-bearer');
-const { configureAxios } = require('./utils')
+const { createPostRequest } = require('./utils')
 
 const port = 3000;
 const app = express();
@@ -20,7 +20,7 @@ app.use(cors());
 
 app.get('/', checkJwt, async (req, res) => {
     try {
-        const config = configureAxios({
+        const config = createPostRequest({
             "collection": "teamMembers",
             "database": "para",
             "dataSource": "AtlasCluster"
