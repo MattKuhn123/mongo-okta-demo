@@ -12,10 +12,10 @@ const agent = new https.Agent({
 });
 
 const checkJwt = auth({
-  audience: process.env.AUDIENCE,
-  issuer: process.env.ISSUER,
-  jwksUri: process.env.JWKSURI,
-  agent: agent,
+    audience: process.env.AUDIENCE,
+    issuer: process.env.ISSUER,
+    jwksUri: process.env.JWKSURI,
+    agent: agent,
 });
 
 app.use(cors());
