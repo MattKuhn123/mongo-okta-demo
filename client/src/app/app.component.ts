@@ -1,6 +1,5 @@
 import { Component, Inject } from '@angular/core';
 import { UserProfileComponent } from "./user-profile/user-profile.component";
-import { EventsListComponent } from "./events/list-events.component";
 import { ListTeamMembersComponent } from "./team-members/list-team-members.component";
 import { AuthService } from '@auth0/auth0-angular';
 import { CommonModule, DOCUMENT } from '@angular/common';
@@ -8,8 +7,6 @@ import { CommonModule, DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-root',
   template: `
-    <hr>
-    <list-events></list-events>
     <hr>
     <list-team-members></list-team-members>
     <hr>
@@ -31,7 +28,6 @@ import { CommonModule, DOCUMENT } from '@angular/common';
   imports: [
     CommonModule,
     UserProfileComponent,
-    EventsListComponent,
     ListTeamMembersComponent
   ]
 })
