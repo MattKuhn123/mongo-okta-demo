@@ -28,7 +28,7 @@ import { CommonModule, DOCUMENT } from '@angular/common';
   imports: [
     CommonModule,
     UserProfileComponent,
-    ListTeamMembersComponent
+    ListTeamMembersComponent,
   ]
 })
 export class AppComponent {
