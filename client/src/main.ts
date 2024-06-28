@@ -3,7 +3,7 @@ import { provideAuth0 } from '@auth0/auth0-angular';
 import { AppComponent } from './app/app.component';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authHttpInterceptorFn } from '@auth0/auth0-angular';
-import { environment } from './environments/environment.development';
+import { environment } from './environments/environment';
 
 bootstrapApplication(AppComponent, {
   providers: [
