@@ -1,8 +1,8 @@
-const express = require('express')
 require('dotenv').config();
+const express = require('express')
 const https = require('https');
 const axios = require('axios');
-var cors = require('cors');
+const cors = require('cors');
 const { auth } = require('express-oauth2-jwt-bearer');
 
 const port = 3000;
