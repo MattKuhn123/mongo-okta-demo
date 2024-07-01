@@ -25,14 +25,8 @@ import { CommonModule, DOCUMENT } from '@angular/common';
     </div>
     `,
   standalone: true,
-  imports: [
-    CommonModule,
-    UserProfileComponent,
-    ListTeamMembersComponent,
-  ]
+  imports: [CommonModule, UserProfileComponent, ListTeamMembersComponent,]
 })
 export class AppComponent {
-  constructor(
-    @Inject(DOCUMENT) protected document: Document,
-    protected auth: AuthService) { }
+  constructor(@Inject(DOCUMENT) protected document: Document, protected auth: AuthService) { }
 }

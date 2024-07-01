@@ -6,19 +6,12 @@ import { User } from '@auth0/auth0-angular';
   selector: 'user-profile',
   imports: [ CommonModule ],
   template: `
-  <ng-container *ngIf="user; else loggedOut">
+  <ng-container *ngIf="user">
     <ul>
       <li>{{ user.name }}</li>
       <li>{{ user.email}}</li>
     </ul>
   </ng-container>
-  
-  <ng-template #loggedOut>
-    <ul>
-      <li> ... </li>
-      <li> ... </li>
-    </ul>
-  </ng-template>
   `,
   standalone: true
 })
