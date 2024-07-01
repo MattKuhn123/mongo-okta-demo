@@ -4,14 +4,12 @@ import { User } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'user-profile',
-  imports: [ CommonModule ],
+  imports: [CommonModule],
   template: `
-  <ng-container *ngIf="user">
-    <ul>
+    <ul *ngIf="user">
       <li>{{ user.name }}</li>
       <li>{{ user.email}}</li>
     </ul>
-  </ng-container>
   `,
   standalone: true
 })

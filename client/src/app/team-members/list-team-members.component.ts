@@ -10,7 +10,9 @@ import { TeamMember } from './team-member.model';
   template: `
   <button 
     *ngIf="!teamMembers" 
-    (click)="onClickGetTeamMembers()">Get Team Members</button>
+    (click)="onClickGetTeamMembers()">
+    Get Team Members
+  </button>
   <table *ngIf="teamMembers">
     <thead>
       <tr>
@@ -19,7 +21,6 @@ import { TeamMember } from './team-member.model';
         <th>Phone Number</th>
       </tr>
     </thead>
-
     <tbody>
       <tr *ngFor="let item of teamMembers">
         <td>{{ item.firstName }}</td>
@@ -33,12 +34,8 @@ import { TeamMember } from './team-member.model';
   standalone: true
 })
 export class ListTeamMembersComponent {
-  teamMembers: TeamMember[] | undefined = undefined;
-  error: any | undefined = undefined;
-
-  get isNoContent(): boolean {
-    return !this.teamMembers || this.error;
-  }
+  teamMembers: TeamMember[] | null = null;
+  error: any = null;
 
   constructor(protected service: TeamMemberService) { }
 

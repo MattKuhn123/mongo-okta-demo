@@ -7,9 +7,7 @@ import { CommonModule, DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-root',
   template: `
-    <hr>
     <list-team-members></list-team-members>
-    <hr>
     <div>
       <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
         <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
@@ -25,7 +23,7 @@ import { CommonModule, DOCUMENT } from '@angular/common';
     </div>
     `,
   standalone: true,
-  imports: [CommonModule, UserProfileComponent, ListTeamMembersComponent,]
+  imports: [CommonModule, UserProfileComponent, ListTeamMembersComponent]
 })
 export class AppComponent {
   constructor(@Inject(DOCUMENT) protected document: Document, protected auth: AuthService) { }
