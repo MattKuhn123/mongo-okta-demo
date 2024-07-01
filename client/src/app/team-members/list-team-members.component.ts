@@ -8,7 +8,10 @@ import { TeamMember } from './team-member.model';
   selector: 'list-team-members',
   imports: [CommonModule, FormsModule],
   template: `
-  <table>
+  <button 
+    *ngIf="!teamMembers" 
+    (click)="onClickGetTeamMembers()">Get Team Members</button>
+  <table *ngIf="teamMembers">
     <thead>
       <tr>
         <th>First Name</th>
@@ -18,15 +21,6 @@ import { TeamMember } from './team-member.model';
     </thead>
 
     <tbody>
-      <tr>
-        <td *ngIf="isNoContent" colspan="3">
-          <button 
-            *ngIf="!teamMembers" 
-            (click)="onClickGetTeamMembers()">Get Team Members</button>
-          <p *ngIf="error">{{ error }}</p>
-        </td>
-      </tr>
-
       <tr *ngFor="let item of teamMembers">
         <td>{{ item.firstName }}</td>
         <td>{{ item.lastName }}</td>
@@ -34,6 +28,7 @@ import { TeamMember } from './team-member.model';
       </tr>
     </tbody>
   </table>
+  <p *ngIf="error">{{ error | json }}</p>
   `,
   standalone: true
 })
