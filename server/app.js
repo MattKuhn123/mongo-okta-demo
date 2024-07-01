@@ -20,17 +20,16 @@ app.use(cors());
 
 app.get('/', checkJwt, async (req, res) => {
     try {
-        console.log('Connecting to server');
         await client.connect();
-        console.log('Connected successfully to server');
         const db = client.db("para");
         const collection = db.collection('teamMembers');
         const response = await collection.find({}).toArray();
-
         res.send(response);
     } catch (err) {
         console.log(err);
         res.send("An error occurred while getting teamMembers");
+    } finally {
+        await client.close();
     }
 })
 
