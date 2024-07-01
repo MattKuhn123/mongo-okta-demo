@@ -4,7 +4,7 @@ import { Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { TeamMember } from './team-member.model';
 
-const teamMembers = "/";
+const teamMembers = "/teamMembers";
 
 @Injectable({
   providedIn: 'root'

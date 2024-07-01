@@ -18,7 +18,7 @@ const checkJwt = auth({
 
 app.use(cors());
 
-app.get('/', checkJwt, async (req, res) => {
+app.get('/teamMembers', checkJwt, async (req, res) => {
     try {
         await client.connect();
         const db = client.db("para");
