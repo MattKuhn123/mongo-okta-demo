@@ -1,10 +1,10 @@
 require('dotenv').config();
 const express = require('express')
 const https = require('https');
-const axios = require('axios');
 const cors = require('cors');
 const { auth } = require('express-oauth2-jwt-bearer');
-const { createPostRequest } = require('./utils')
+const { MongoClient } = require('mongodb');
+const client = new MongoClient(process.env.MONGODB_URI);
 
 const port = 3000;
 const app = express();
@@ -20,14 +20,14 @@ app.use(cors());
 
 app.get('/', checkJwt, async (req, res) => {
     try {
-        const config = createPostRequest({
-            "collection": "teamMembers",
-            "database": "para",
-            "dataSource": "AtlasCluster"
-        });
+        console.log('Connecting to server');
+        await client.connect();
+        console.log('Connected successfully to server');
+        const db = client.db("para");
+        const collection = db.collection('teamMembers');
+        const response = await collection.find({}).toArray();
 
-        const response = await axios(config);
-        res.send(response.data.documents);
+        res.send(response);
     } catch (err) {
         console.log(err);
         res.send("An error occurred while getting teamMembers");
