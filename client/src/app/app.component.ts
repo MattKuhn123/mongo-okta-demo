@@ -1,30 +1,20 @@
-import { Component, Inject } from '@angular/core';
-import { UserProfileComponent } from "./user-profile/user-profile.component";
+import { Component } from '@angular/core';
+import { UserProfileComponent } from "./user-profile.component";
 import { ListTeamMembersComponent } from "./team-members/list-team-members.component";
 import { AuthService } from '@auth0/auth0-angular';
-import { CommonModule, DOCUMENT } from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { LoginButtonComponent } from './login-button.component';
 
 @Component({
   selector: 'app-root',
   template: `
+    <login-button></login-button>
+    <user-profile [user]="auth.user$ | async"></user-profile>
     <list-team-members></list-team-members>
-    <div>
-      <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-        <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
-          Log out
-        </button>
-
-        <user-profile [user]="auth.user$ | async"></user-profile>
-      </ng-container>
-      
-      <ng-template #loggedOut>
-        <button (click)="auth.loginWithRedirect()">Log in</button>
-      </ng-template>
-    </div>
     `,
   standalone: true,
-  imports: [CommonModule, UserProfileComponent, ListTeamMembersComponent]
+  imports: [CommonModule, UserProfileComponent, ListTeamMembersComponent, LoginButtonComponent,]
 })
 export class AppComponent {
-  constructor(@Inject(DOCUMENT) protected document: Document, protected auth: AuthService) { }
+  constructor(protected auth: AuthService) { }
 }

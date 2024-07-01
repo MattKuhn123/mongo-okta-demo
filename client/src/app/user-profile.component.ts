@@ -5,12 +5,7 @@ import { User } from '@auth0/auth0-angular';
 @Component({
   selector: 'user-profile',
   imports: [CommonModule],
-  template: `
-    <ul *ngIf="user">
-      <li>{{ user.name }}</li>
-      <li>{{ user.email}}</li>
-    </ul>
-  `,
+  template: `<p *ngIf="user">{{ user.name }}</p>`,
   standalone: true
 })
 export class UserProfileComponent {
