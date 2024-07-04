@@ -4,16 +4,22 @@ import { ListTeamMembersComponent } from "./team-members/list-team-members.compo
 import { AuthService } from '@auth0/auth0-angular';
 import { CommonModule } from '@angular/common';
 import { LoginButtonComponent } from './login-button.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   template: `
     <login-button></login-button>
-    <user-profile [user]="auth.user$ | async"></user-profile>
-    <list-team-members></list-team-members>
-    `,
-  standalone: true,
-  imports: [CommonModule, UserProfileComponent, ListTeamMembersComponent, LoginButtonComponent,]
+    <router-outlet></router-outlet>
+  `,
+  imports: [
+    CommonModule,
+    UserProfileComponent,
+    ListTeamMembersComponent,
+    LoginButtonComponent,
+    RouterOutlet,
+  ]
 })
 export class AppComponent {
   constructor(protected auth: AuthService) { }
